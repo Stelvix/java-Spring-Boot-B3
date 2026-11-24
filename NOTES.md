@@ -94,3 +94,86 @@ steevenhounkpe-sagbo@MacBook-Air-de-Steeven projet-starter %
 ```
 
 Le test fourni passe avec succès. Je commit ensuite les changements. 
+
+Apres avoir modifié la ligne `@Column(name = "date_cmde"` par `@Column(name = "date_commande"`, je relance l'application et voici le résultat:
+```bash
+Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema validation: missing column [date_commande] in table [bon]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateTable(AbstractSchemaValidator.java:141) ~[hibernate-core-7.4.13.Final.jar:7.4.13.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaValidatorImpl.validateTables(GroupedSchemaValidatorImpl.java:42) ~[hibernate-core-7.4.13.Final.jar:7.4.13.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.performValidation(AbstractSchemaValidator.java:97) ~[hibernate-core-7.4.13.Final.jar:7.4.13.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.doValidation(AbstractSchemaValidator.java:75) ~[hibernate-core-7.4.13.Final.jar:7.4.13.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:278) ~[hibernate-core-7.4.13.Final.jar:7.4.13.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$1(SchemaManagementToolCoordinator.java:101) ~[hibernate-core-7.4.13.Final.jar:7.4.13.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1430) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:100) ~[hibernate-core-7.4.13.Final.jar:7.4.13.Final]
+```
+Ça été refusé par Hibernate car la colonne `date_commande` n'existe pas dans la table `bon`. 
+C'est une bonne nouvelle car en premier : 
+- lieu ça permet de vérifier que la colonne `date_commande` est bien mappée à la table `bon`.
+- Ensuite ça permet de mettre de la sécurité sur le code, pour éviter de créer des colonnes qui n'existent pas dans la base de données ou même des tables.
+- Enfin ça permet de vérifier que la base de données est bien synchronisée avec le code.
+
+Je crée ensuite le `jar` avec la commande `./mvnw package` et voici le résultat:
+```bash
+[INFO] Replacing main artifact /Users/steevenhounkpe-sagbo/Documents/Devs/Java SpringBoot/tp-01-demarrer-compta-api/projet-starter/target/compta-api-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /Users/steevenhounkpe-sagbo/Documents/Devs/Java SpringBoot/tp-01-demarrer-compta-api/projet-starter/target/compta-api-0.0.1-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.389 s
+[INFO] Finished at: 2026-11-24T15:25:38+01:00
+[INFO] ------------------------------------------------------------------------
+steevenhounkpe-sagbo@MacBook-Air-de-Steeven projet-starter % 
+```
+
+Le jar est bien crée. Je le lance ensuite sur le port 8082 pour tester (alors qu'il a été compilé avec le port 8081).
+``` bash
+steevenhounkpe-sagbo@MacBook-Air-de-Steeven projet-starter % java -jar target/compta-api-0.0.1-SNAPSHOT.jar --server.port=8082
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.2)
+
+2026-11-24T15:29:42.559+01:00  INFO 94214 --- [compta-api] [           main] org.sebsy.compta.ComptaApiApplication    : Starting ComptaApiApplication v0.0.1-SNAPSHOT using Java 25.0.4.1 with PID 94214 (/Users/steevenhounkpe-sagbo/Documents/Devs/Java SpringBoot/tp-01-demarrer-compta-api/projet-starter/target/compta-api-0.0.1-SNAPSHOT.jar started by steevenhounkpe-sagbo in /Users/steevenhounkpe-sagbo/Documents/Devs/Java SpringBoot/tp-01-demarrer-compta-api/projet-starter)
+2026-11-24T15:29:42.561+01:00  INFO 94214 --- [compta-api] [           main] org.sebsy.compta.ComptaApiApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-11-24T15:29:42.954+01:00  INFO 94214 --- [compta-api] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-24T15:29:42.962+01:00  INFO 94214 --- [compta-api] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JPA repository interfaces.
+2026-11-24T15:29:43.200+01:00  INFO 94214 --- [compta-api] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-11-24T15:29:43.207+01:00  INFO 94214 --- [compta-api] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-24T15:29:43.207+01:00  INFO 94214 --- [compta-api] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-24T15:29:43.222+01:00  INFO 94214 --- [compta-api] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 619 ms
+2026-11-24T15:29:43.354+01:00  INFO 94214 --- [compta-api] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-24T15:29:43.393+01:00  INFO 94214 --- [compta-api] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.13.Final
+2026-11-24T15:29:43.613+01:00  INFO 94214 --- [compta-api] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-24T15:29:43.630+01:00  INFO 94214 --- [compta-api] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-24T15:29:43.704+01:00  INFO 94214 --- [compta-api] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.mariadb.jdbc.Connection@2db461b5
+2026-11-24T15:29:43.704+01:00  INFO 94214 --- [compta-api] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-24T15:29:43.736+01:00  INFO 94214 --- [compta-api] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+        Database JDBC URL [jdbc:mariadb://localhost/compta]
+        Database driver: MariaDB Connector/J
+        Database dialect: MariaDBDialect
+        Database version: 12.3.3
+        Default catalog/schema: compta/undefined
+        Autocommit mode: undefined/unknown
+        Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+        JDBC fetch size: none
+        Pool: DataSourceConnectionProvider
+        Minimum pool size: undefined/unknown
+        Maximum pool size: undefined/unknown
+2026-11-24T15:29:44.217+01:00  INFO 94214 --- [compta-api] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-24T15:29:44.247+01:00  INFO 94214 --- [compta-api] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-24T15:29:44.273+01:00  WARN 94214 --- [compta-api] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-24T15:29:44.475+01:00  INFO 94214 --- [compta-api] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-11-24T15:29:44.511+01:00  INFO 94214 --- [compta-api] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-11-24T15:29:44.515+01:00  INFO 94214 --- [compta-api] [           main] org.sebsy.compta.ComptaApiApplication    : Started ComptaApiApplication in 2.154 seconds (process running for 2.392)
+2026-11-24T15:30:28.499+01:00  INFO 94214 --- [compta-api] [nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-24T15:30:28.499+01:00  INFO 94214 --- [compta-api] [nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-24T15:30:28.503+01:00  INFO 94214 --- [compta-api] [nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+```
+
+Le résultat est positif, et il me montre que c'est l'argument qui gagne sur le port de l'application. Le port 8082 est bien pris en compte par l'application.
