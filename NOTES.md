@@ -177,3 +177,399 @@ steevenhounkpe-sagbo@MacBook-Air-de-Steeven projet-starter % java -jar target/co
 ```
 
 Le résultat est positif, et il me montre que c'est l'argument qui gagne sur le port de l'application. Le port 8082 est bien pris en compte par l'application.
+
+## TP 2
+
+#### 1 - J'ai copié le contenu du projet starter qui est dans le TP 2 dans le TP1. Et j'ai exécuté, et j'ai eu des erreurs de compilation car certaines routes n'existaient pas.
+Voici le résultat de l'exécution:
+```
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/devis
+       Parameters = {prixHt=[2.25]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = org.springframework.web.servlet.resource.ResourceHttpRequestHandler
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.resource.NoResourceFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = No static resource api/devis.
+          Headers = []
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/devis
+       Parameters = {prixHt=[2.25], quantite=[10]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = org.springframework.web.servlet.resource.ResourceHttpRequestHandler
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.resource.NoResourceFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = No static resource api/devis.
+          Headers = []
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/devis/3
+       Parameters = {prixHt=[74.99]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = org.springframework.web.servlet.resource.ResourceHttpRequestHandler
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.resource.NoResourceFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = No static resource api/devis/3.
+          Headers = []
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/devis
+       Parameters = {prixHt=[74.99], quantite=[3]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = org.springframework.web.servlet.resource.ResourceHttpRequestHandler
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.resource.NoResourceFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = No static resource api/devis.
+          Headers = []
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/devis
+       Parameters = {quantite=[3]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = org.springframework.web.servlet.resource.ResourceHttpRequestHandler
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.resource.NoResourceFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = No static resource api/devis.
+          Headers = []
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+[ERROR] Tests run: 5, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.042 s <<< FAILURE! -- in org.sebsy.compta.web.DevisControllerTest
+[ERROR] org.sebsy.compta.web.DevisControllerTest.quantiteParDefaut -- Time elapsed: 0.021 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status code] 
+expected: 200
+ but was: 404
+        at org.springframework.test.web.servlet.assertj.AbstractHttpServletResponseAssert.hasStatus(AbstractHttpServletResponseAssert.java:185)
+        at org.springframework.test.web.servlet.assertj.AbstractHttpServletResponseAssert.hasStatus(AbstractHttpServletResponseAssert.java:195)
+        at org.sebsy.compta.web.DevisControllerTest.quantiteParDefaut(DevisControllerTest.java:31)
+
+[ERROR] org.sebsy.compta.web.DevisControllerTest.remiseDeVolumeParDefaut -- Time elapsed: 0.003 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status code] 
+expected: 200
+ but was: 404
+        at org.springframework.test.web.servlet.assertj.AbstractHttpServletResponseAssert.hasStatus(AbstractHttpServletResponseAssert.java:185)
+        at org.springframework.test.web.servlet.assertj.AbstractHttpServletResponseAssert.hasStatus(AbstractHttpServletResponseAssert.java:195)
+        at org.sebsy.compta.web.DevisControllerTest.remiseDeVolumeParDefaut(DevisControllerTest.java:46)
+
+[ERROR] org.sebsy.compta.web.DevisControllerTest.parVariableDeChemin -- Time elapsed: 0.004 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status code] 
+expected: 200
+ but was: 404
+        at org.springframework.test.web.servlet.assertj.AbstractHttpServletResponseAssert.hasStatus(AbstractHttpServletResponseAssert.java:185)
+        at org.springframework.test.web.servlet.assertj.AbstractHttpServletResponseAssert.hasStatus(AbstractHttpServletResponseAssert.java:195)
+        at org.sebsy.compta.web.DevisControllerTest.parVariableDeChemin(DevisControllerTest.java:39)
+
+[ERROR] org.sebsy.compta.web.DevisControllerTest.parParametres -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status code] 
+expected: 200
+ but was: 404
+        at org.springframework.test.web.servlet.assertj.AbstractHttpServletResponseAssert.hasStatus(AbstractHttpServletResponseAssert.java:185)
+        at org.springframework.test.web.servlet.assertj.AbstractHttpServletResponseAssert.hasStatus(AbstractHttpServletResponseAssert.java:195)
+        at org.sebsy.compta.web.DevisControllerTest.parParametres(DevisControllerTest.java:23)
+
+[ERROR] org.sebsy.compta.web.DevisControllerTest.prixManquant -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status code] 
+expected: 400
+ but was: 404
+        at org.springframework.test.web.servlet.assertj.AbstractHttpServletResponseAssert.hasStatus(AbstractHttpServletResponseAssert.java:185)
+        at org.springframework.test.web.servlet.assertj.AbstractHttpServletResponseAssert.hasStatus(AbstractHttpServletResponseAssert.java:195)
+        at org.sebsy.compta.web.DevisControllerTest.prixManquant(DevisControllerTest.java:53)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   DevisControllerTest.parParametres:23 [HTTP status code] 
+expected: 200                                                                                                                                                                   
+ but was: 404                                                                                                                                                                   
+[ERROR]   DevisControllerTest.parVariableDeChemin:39 [HTTP status code] 
+expected: 200                                                                                                                                                                   
+ but was: 404                                                                                                                                                                   
+[ERROR]   DevisControllerTest.prixManquant:53 [HTTP status code] 
+expected: 400                                                                                                                                                                   
+ but was: 404                                                                                                                                                                   
+[ERROR]   DevisControllerTest.quantiteParDefaut:31 [HTTP status code] 
+expected: 200                                                                                                                                                                   
+ but was: 404                                                                                                                                                                   
+[ERROR]   DevisControllerTest.remiseDeVolumeParDefaut:46 [HTTP status code] 
+expected: 200                                                                                                                                                                   
+ but was: 404                                                                                                                                                                   
+[INFO] 
+[ERROR] Tests run: 6, Failures: 5, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.657 s
+[INFO] Finished at: 2026-11-26T08:55:39+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project compta-api: There are test failures.
+[ERROR] 
+[ERROR] See /Users/steevenhounkpe-sagbo/Documents/Devs/Java SpringBoot/tp-01-demarrer-compta-api/projet-starter/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+```
+
+Il explique que les routes n'existent pas.
+
+#### 2 - Je crée une interface:
+Je crée que je nomme 'Remise' et que DevisService va implémenter. Cette interface contient une méthode BigDécimal taux qui prends en parmaètre uen quatité.
+```
+
+public interface Remise {
+     BigDecimal taux(int quantite);
+}
+```
+
+#### 3 Je crée ensuite le fichier service.
+```
+package org.sebsy.compta.service;
+
+import org.sebsy.compta.devis.Devis;
+import org.sebsy.compta.devis.Remise;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+
+@Service
+public class DevisService {
+
+    private final Remise remise;
+
+    public DevisService(Remise remise) {
+        this.remise = remise;
+    }
+
+    public Devis calculer(BigDecimal prixHt, int quantite) {
+        return Devis.calculer(prixHt, quantite, remise);
+    }
+}
+```
+
+##### Création du fichier controller
+```
+package org.sebsy.compta.web;
+
+import java.math.BigDecimal;
+
+import org.sebsy.compta.devis.Devis;
+import org.sebsy.compta.service.DevisService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequestMapping("/api/devis")
+@RequiredArgsConstructor
+public class DevisController {
+
+    private final DevisService devisService;
+
+    @GetMapping
+    public Devis calculerDevis(@RequestParam BigDecimal prixHt, @RequestParam(defaultValue = "1") int quantite
+    ) {
+        return devisService.calculer(prixHt, quantite);
+    }
+}
+```
+
+Test du controller
+```
+steevenhounkpe-sagbo@MacBook-Air-de-Steeven projet-starter % curl "localhost:8081/api/devis?prixHt=2.25&quantite=10"
+{"quantite":10,"ht":22.50,"ttc":27.00}%  
+```
+Explication du résultat: Le résultat est positif, le controller fonctionne bien. Il calcule le devis avec le prix HT et la quantité. Le résultat est bien en JSON.
+
+Un autre test avec la quantité par défaut:
+```
+steevenhounkpe-sagbo@MacBook-Air-de-Steeven projet-starter % curl "localhost:8081/api/devis/3?prixHt=74.99"         
+{"timestamp":"2026-11-26T09:09:26.450Z","status":404,"error":"Not Found","trace":"org.springframework.web.servlet.resource.NoResourceFoundException:
+ No static resource api/devis/3 for request '/api/devis/3'.\n\tat org.springframework.web.servlet.resource.ResourceHttpRequestHandler.handleRequest(ResourceHttpRequestHandler.java:527)\n\tat
+ org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter.handle(HttpRequestHandlerAdapter.java:50)\n\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)\n\tat
+ org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866)\n\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1000)\n\tat org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:892)\n\tat
+ jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)\n\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874)\n\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:132)\n\tat
+ org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:59)\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)\n\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\n\tat
+ org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)\n\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\n\tat
+ org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)\n\tat org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110)\n\tat
+ org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)\n\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\n\tat
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)\n\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:164)\n\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)\n\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)\n\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)\n\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)\n\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)\n\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:347)\n\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:411)\n\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)\n\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1308)\n\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2202)\n\tat
+ org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)\n\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:947)\n\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:481)\n\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)\n\tat java.base/java.lang.Thread.run(Thread.java:1474)\n","message":"No static resource api/devis/3.","path":"/api/devis/3"}%  
+```
+
+Cette erreur signifie que la route `/api/devis/3` n'existe pas.
+Le controller ne gère pas les requêtes avec un identifiant dans l'URL, il ne prend en charge que les requêtes avec des paramètres de requête (query parameters).
+
+##### Un autre test avec la quantité à 3
+```
+steevenhounkpe-sagbo@MacBook-Air-de-Steeven projet-starter % curl "localhost:8081/api/devis?quantite=3"
+{"timestamp":"2026-11-26T09:13:46.077Z","status":400,"error":"Bad Request","trace":"org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'prixHt' for method parameter type BigDecimal is not present\n\tat org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValueInternal(RequestParamMethodArgumentResolver.java:219)\n\tat org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValue(RequestParamMethodArgumentResolver.java:195)\n\tat org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:123)\n\tat org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122)\n\tat org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:224)\n\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:174)\n\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)\n\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934)\n\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853)\n\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86)\n\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)\n\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866)\n\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1000)\n\tat org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:892)\n\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)\n\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874)\n\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:132)\n\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:59)\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)\n\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)\n\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)\n\tat org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110)\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)\n\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)\n\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:164)\n\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)\n\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)\n\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)\n\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)\n\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)\n\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:347)\n\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:411)\n\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)\n\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1308)\n\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2202)\n\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)\n\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:947)\n\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:481)\n\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)\n\tat java.base/java.lang.Thread.run(Thread.java:1474)\n","message":"Required parameter 'prixHt' is not present.","path":"/api/devis"}%                                                                                 steevenhounkpe-sagbo@MacBook-Air-de-Steeven projet-starter % 
+```
+
+#### Faisons de RemiseVolume la remise par défaut. Rejouons le premier appel de l'étape 4 et copiez la réponse. 
+
+```
+steevenhounkpe-sagbo@MacBook-Air-de-Steeven projet-starter % curl "localhost:8081/api/devis?prixHt=2.25&quantite=10"
+{"quantite":10,"ht":21.38,"ttc":25.66}%  
+```
+
+Le résultat est positif, le controller fonctionne bien. Il calcule le devis avec le prix HT et la quantité. Le résultat est bien en JSON. La remise par défaut est bien appliquée.
+
+Et la commande './mvnw test' est bien passée avec succès.
+```
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s -- in org.sebsy.compta.web.DevisControllerTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.685 s
+[INFO] Finished at: 2026-11-26T10:31:50+01:00
+[INFO] ------------------------------------------------------------------------
+steevenhounkpe-sagbo@MacBook-Air-de-Steeven projet-starter % 
+```
+
